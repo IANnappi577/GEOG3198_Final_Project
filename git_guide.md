@@ -13,7 +13,7 @@
 6. type `git push` --> this will push your changes to the repository
 7. If you want to verify that it worked, go to the <a href="https://github.com/IANnappi577/GEOG3198_Final_Project">repository URL</a> and see if your name and commit message shows up under the commits banner here:
 
-<img src="../assets/git_push_verification.png">
+<img src="./assets/git_push_verification.png">
 
 
 #### Git Pull: update your local computer's copy of the code with any changes the other person made. Essentially, "pull" from the repository
