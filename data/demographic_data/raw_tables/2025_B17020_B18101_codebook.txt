@@ -1,0 +1,270 @@
+--------------------------------------------------------------------------------
+Codebook for NHGIS data file 'nhgis0006_ds273_20245_tract'
+--------------------------------------------------------------------------------
+ 
+Contents
+    - Data Summary
+    - Data Dictionary
+    - Citation and Use
+ 
+Additional documentation on NHGIS data sources is available at: 
+    https://www.nhgis.org/documentation/tabular-data 
+ 
+--------------------------------------------------------------------------------
+Data Summary
+--------------------------------------------------------------------------------
+ 
+Year:             2020-2024
+Geographic level: Census Tract (by State--County)
+Extent:           District of Columbia
+Dataset:          2024 American Community Survey: 5-Year Data [2020-2024, Tracts & Larger Areas]
+   NHGIS code:    2020_2024_ACS5b
+   NHGIS ID:      ds273
+Breakdown(s):     Geographic Component:
+                     Total area (00)
+Data type(s):     (E) Estimates
+                  (M) Margins of error
+ 
+Tables:
+ 
+1. Poverty Status in the Past 12 Months by Age
+   Universe:    Population for whom poverty status is determined
+   Source code: B17020
+   NHGIS code:  AU84
+ 
+2. Sex by Age by Disability Status
+   Universe:    Civilian noninstitutionalized population
+   Source code: B18101
+   NHGIS code:  AU9J
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Context Fields 
+        GISJOIN:     GIS Join Match Code
+        YEAR:        Data File Year
+        STUSAB:      State Postal Abbreviation
+        REGIONA:     Region Code
+        DIVISIONA:   Division Code
+        STATE:       State Name
+        STATEA:      State Code
+        COUNTY:      County Name
+        COUNTYA:     County Code
+        COUSUBA:     County Subdivision Code
+        PLACEA:      Place Code
+        TRACTA:      Census Tract Code
+        CONCITA:     Consolidated City Code
+        AIANHHA:     American Indian Area/Alaska Native Area/Hawaiian Home Land Code
+        RES_ONLYA:   American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only) Code
+        TRUSTA:      American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land Code
+        AIHHTLI:     American Indian/Hawaiian Home Land Trust Land Indicator
+        AITSA:       Tribal Subdivision/Remainder Code
+        ANRCA:       Alaska Native Regional Corporation Code
+        CBSAA:       Metropolitan Statistical Area/Micropolitan Statistical Area Code
+        CSAA:        Combined Statistical Area Code
+        METDIVA:     Metropolitan Division Code
+        UAA:         Urban Area Code
+        CDCURRA:     Congressional District (2025-2027, 119th Congress) Code
+        SLDUA:       State Legislative District (Upper Chamber) Code
+        SLDLA:       State Legislative District (Lower Chamber) Code
+        ZCTA5A:      5-Digit ZIP Code Tabulation Area Code
+        SUBMCDA:     Subminor Civil Division Code
+        SDELMA:      School District (Elementary)/Remainder Code
+        SDSECA:      School District (Secondary)/Remainder Code
+        SDUNIA:      School District (Unified)/Remainder Code
+        PCI:         Principal City Indicator
+        PUMAA:       Public Use Microdata Area Code
+        GEO_ID:      Census Geographic Identifier
+        BTTRA:       Tribal Census Tract Code
+        TL_GEO_ID:   TIGER/Line Shapefile Geographic Identifier
+ 
+Data Type (E):
+    Estimates
+ 
+        NAME_E:      Area Name
+ 
+    Table 1:     Poverty Status in the Past 12 Months by Age
+    Universe:    Population for whom poverty status is determined
+    Source code: B17020
+    NHGIS code:  AU84
+        AU84E001:    Total
+        AU84E002:    Income in the past 12 months below poverty level
+        AU84E003:    Income in the past 12 months below poverty level: Under 6 years
+        AU84E004:    Income in the past 12 months below poverty level: 6 to 11 years
+        AU84E005:    Income in the past 12 months below poverty level: 12 to 17 years
+        AU84E006:    Income in the past 12 months below poverty level: 18 to 59 years
+        AU84E007:    Income in the past 12 months below poverty level: 60 to 74 years
+        AU84E008:    Income in the past 12 months below poverty level: 75 to 84 years
+        AU84E009:    Income in the past 12 months below poverty level: 85 years and over
+        AU84E010:    Income in the past 12 months at or above poverty level
+        AU84E011:    Income in the past 12 months at or above poverty level: Under 6 years
+        AU84E012:    Income in the past 12 months at or above poverty level: 6 to 11 years
+        AU84E013:    Income in the past 12 months at or above poverty level: 12 to 17 years
+        AU84E014:    Income in the past 12 months at or above poverty level: 18 to 59 years
+        AU84E015:    Income in the past 12 months at or above poverty level: 60 to 74 years
+        AU84E016:    Income in the past 12 months at or above poverty level: 75 to 84 years
+        AU84E017:    Income in the past 12 months at or above poverty level: 85 years and over
+ 
+    Table 2:     Sex by Age by Disability Status
+    Universe:    Civilian noninstitutionalized population
+    Source code: B18101
+    NHGIS code:  AU9J
+        AU9JE001:    Total
+        AU9JE002:    Male
+        AU9JE003:    Male: Under 5 years
+        AU9JE004:    Male: Under 5 years: With a disability
+        AU9JE005:    Male: Under 5 years: No disability
+        AU9JE006:    Male: 5 to 17 years
+        AU9JE007:    Male: 5 to 17 years: With a disability
+        AU9JE008:    Male: 5 to 17 years: No disability
+        AU9JE009:    Male: 18 to 34 years
+        AU9JE010:    Male: 18 to 34 years: With a disability
+        AU9JE011:    Male: 18 to 34 years: No disability
+        AU9JE012:    Male: 35 to 64 years
+        AU9JE013:    Male: 35 to 64 years: With a disability
+        AU9JE014:    Male: 35 to 64 years: No disability
+        AU9JE015:    Male: 65 to 74 years
+        AU9JE016:    Male: 65 to 74 years: With a disability
+        AU9JE017:    Male: 65 to 74 years: No disability
+        AU9JE018:    Male: 75 years and over
+        AU9JE019:    Male: 75 years and over: With a disability
+        AU9JE020:    Male: 75 years and over: No disability
+        AU9JE021:    Female
+        AU9JE022:    Female: Under 5 years
+        AU9JE023:    Female: Under 5 years: With a disability
+        AU9JE024:    Female: Under 5 years: No disability
+        AU9JE025:    Female: 5 to 17 years
+        AU9JE026:    Female: 5 to 17 years: With a disability
+        AU9JE027:    Female: 5 to 17 years: No disability
+        AU9JE028:    Female: 18 to 34 years
+        AU9JE029:    Female: 18 to 34 years: With a disability
+        AU9JE030:    Female: 18 to 34 years: No disability
+        AU9JE031:    Female: 35 to 64 years
+        AU9JE032:    Female: 35 to 64 years: With a disability
+        AU9JE033:    Female: 35 to 64 years: No disability
+        AU9JE034:    Female: 65 to 74 years
+        AU9JE035:    Female: 65 to 74 years: With a disability
+        AU9JE036:    Female: 65 to 74 years: No disability
+        AU9JE037:    Female: 75 years and over
+        AU9JE038:    Female: 75 years and over: With a disability
+        AU9JE039:    Female: 75 years and over: No disability
+ 
+Data Type (M):
+    Margins of error
+ 
+        NAME_M:      Area Name
+ 
+    Table 1:     Poverty Status in the Past 12 Months by Age
+    Universe:    Population for whom poverty status is determined
+    Source code: B17020
+    NHGIS code:  AU84
+        AU84M001:    Total
+        AU84M002:    Income in the past 12 months below poverty level
+        AU84M003:    Income in the past 12 months below poverty level: Under 6 years
+        AU84M004:    Income in the past 12 months below poverty level: 6 to 11 years
+        AU84M005:    Income in the past 12 months below poverty level: 12 to 17 years
+        AU84M006:    Income in the past 12 months below poverty level: 18 to 59 years
+        AU84M007:    Income in the past 12 months below poverty level: 60 to 74 years
+        AU84M008:    Income in the past 12 months below poverty level: 75 to 84 years
+        AU84M009:    Income in the past 12 months below poverty level: 85 years and over
+        AU84M010:    Income in the past 12 months at or above poverty level
+        AU84M011:    Income in the past 12 months at or above poverty level: Under 6 years
+        AU84M012:    Income in the past 12 months at or above poverty level: 6 to 11 years
+        AU84M013:    Income in the past 12 months at or above poverty level: 12 to 17 years
+        AU84M014:    Income in the past 12 months at or above poverty level: 18 to 59 years
+        AU84M015:    Income in the past 12 months at or above poverty level: 60 to 74 years
+        AU84M016:    Income in the past 12 months at or above poverty level: 75 to 84 years
+        AU84M017:    Income in the past 12 months at or above poverty level: 85 years and over
+ 
+    Table 2:     Sex by Age by Disability Status
+    Universe:    Civilian noninstitutionalized population
+    Source code: B18101
+    NHGIS code:  AU9J
+        AU9JM001:    Total
+        AU9JM002:    Male
+        AU9JM003:    Male: Under 5 years
+        AU9JM004:    Male: Under 5 years: With a disability
+        AU9JM005:    Male: Under 5 years: No disability
+        AU9JM006:    Male: 5 to 17 years
+        AU9JM007:    Male: 5 to 17 years: With a disability
+        AU9JM008:    Male: 5 to 17 years: No disability
+        AU9JM009:    Male: 18 to 34 years
+        AU9JM010:    Male: 18 to 34 years: With a disability
+        AU9JM011:    Male: 18 to 34 years: No disability
+        AU9JM012:    Male: 35 to 64 years
+        AU9JM013:    Male: 35 to 64 years: With a disability
+        AU9JM014:    Male: 35 to 64 years: No disability
+        AU9JM015:    Male: 65 to 74 years
+        AU9JM016:    Male: 65 to 74 years: With a disability
+        AU9JM017:    Male: 65 to 74 years: No disability
+        AU9JM018:    Male: 75 years and over
+        AU9JM019:    Male: 75 years and over: With a disability
+        AU9JM020:    Male: 75 years and over: No disability
+        AU9JM021:    Female
+        AU9JM022:    Female: Under 5 years
+        AU9JM023:    Female: Under 5 years: With a disability
+        AU9JM024:    Female: Under 5 years: No disability
+        AU9JM025:    Female: 5 to 17 years
+        AU9JM026:    Female: 5 to 17 years: With a disability
+        AU9JM027:    Female: 5 to 17 years: No disability
+        AU9JM028:    Female: 18 to 34 years
+        AU9JM029:    Female: 18 to 34 years: With a disability
+        AU9JM030:    Female: 18 to 34 years: No disability
+        AU9JM031:    Female: 35 to 64 years
+        AU9JM032:    Female: 35 to 64 years: With a disability
+        AU9JM033:    Female: 35 to 64 years: No disability
+        AU9JM034:    Female: 65 to 74 years
+        AU9JM035:    Female: 65 to 74 years: With a disability
+        AU9JM036:    Female: 65 to 74 years: No disability
+        AU9JM037:    Female: 75 years and over
+        AU9JM038:    Female: 75 years and over: With a disability
+        AU9JM039:    Female: 75 years and over: No disability
+ 
+--------------------------------------------------------------------------------
+Citation and Use of NHGIS Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* REDISTRIBUTION: You will not redistribute the data without permission.
+
+  You may publish a subset of the data to meet journal requirements for accessing 
+  data related to a particular publication. Contact us for permission for any other 
+  redistribution; we will consider requests for free and commercial redistribution.
+
+* CITATION: You will cite NHGIS appropriately.
+
+    * Publications and research reports employing NHGIS data (either tabular or GIS) 
+      should include the following citation:
+
+        Jonathan Schroeder, David Van Riper, Steven Manson, Katherine Knowles, Tracy Kugler, Finn Roberts, and Steven Ruggles. 
+        IPUMS National Historical Geographic Information System: Version 20.0 
+        [dataset]. Minneapolis, MN: IPUMS. 2025. 
+        http://doi.org/10.18128/D050.V20.0
+
+    * For policy briefs, online resources, or articles in the popular press, we 
+      recommend that you cite the use of NHGIS data as follows:
+
+        IPUMS NHGIS, University of Minnesota, www.nhgis.org.
+
+These terms of use are a legally binding agreement. You can use the data only in 
+accordance with these terms, and any other use is a violation of the agreement. 
+Violations may result in revocation of the agreement and prohibition from using other 
+IPUMS data. If IPUMS or our partners are harmed from your violation, you are 
+responsible for all damages, including reasonable attorney's fees and expenses.
+        
+In addition, we request that users send us a copy of any publications, research
+reports, or educational material making use of the data or documentation.
+
+Send electronic material to: nhgis@umn.edu
+
+Printed matter should be sent to:
+
+    IPUMS NHGIS
+    Institute for Social Research and Data Innovation
+    University of Minnesota
+    50 Willey Hall
+    225 19th Ave S
+    Minneapolis, MN 55455

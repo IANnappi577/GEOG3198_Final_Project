@@ -1,0 +1,272 @@
+--------------------------------------------------------------------------------
+Codebook for NHGIS data file 'nhgis0006_ds216_20155_tract'
+--------------------------------------------------------------------------------
+ 
+Contents
+    - Data Summary
+    - Data Dictionary
+    - Citation and Use
+ 
+Additional documentation on NHGIS data sources is available at: 
+    https://www.nhgis.org/documentation/tabular-data 
+ 
+--------------------------------------------------------------------------------
+Data Summary
+--------------------------------------------------------------------------------
+ 
+Year:             2011-2015
+Geographic level: Census Tract (by State--County)
+Extent:           District of Columbia
+Dataset:          2015 American Community Survey: 5-Year Data [2011-2015, Tracts & Larger Areas]
+   NHGIS code:    2011_2015_ACS5b
+   NHGIS ID:      ds216
+Breakdown(s):     Geographic Component:
+                     Total area (00)
+Data type(s):     (E) Estimates
+                  (M) Margins of error
+ 
+Tables:
+ 
+1. Poverty Status in the Past 12 Months by Age
+   Universe:    Population for whom poverty status is determined
+   Source code: B17020
+   NHGIS code:  AD2D
+ 
+2. Sex by Age by Disability Status
+   Universe:    Civilian noninstitutionalized population
+   Source code: B18101
+   NHGIS code:  AD2S
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Context Fields 
+        GISJOIN:     GIS Join Match Code
+        YEAR:        Data File Year
+        STUSAB:      State Postal Abbreviation
+        REGIONA:     Region Code
+        DIVISIONA:   Division Code
+        STATE:       State Name
+        STATEA:      State Code
+        COUNTY:      County Name
+        COUNTYA:     County Code
+        COUSUBA:     County Subdivision Code
+        PLACEA:      Place Code
+        TRACTA:      Census Tract Code
+        CONCITA:     Consolidated City Code
+        AIANHHA:     American Indian Area/Alaska Native Area/Hawaiian Home Land Code
+        RES_ONLYA:   American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only) Code
+        TRUSTA:      American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land Code
+        AIHHTLI:     American Indian Trust Land/ Hawaiian Home Land Indicator
+        AITSCEA:     Tribal Subdivision/Remainder Code
+        ANRCA:       Alaska Native Regional Corporation Code
+        CBSAA:       Metropolitan Statistical Area/Micropolitan Statistical Area Code
+        CSAA:        Combined Statistical Area Code
+        METDIVA:     Metropolitan Division Code
+        NECTAA:      New England City and Town Area Code
+        CNECTAA:     Combined New England City and Town Area Code
+        NECTADIVA:   New England City and Town Area Division Code
+        UAA:         Urban Area Code
+        CDCURRA:     Congressional District (2013-2017, 113th-114th Congress) Code
+        SLDUA:       State Legislative District (Upper Chamber) Code
+        SLDLA:       State Legislative District (Lower Chamber) Code
+        ZCTA5A:      5-Digit ZIP Code Tabulation Area Code
+        SUBMCDA:     Subminor Civil Division Code
+        SDELMA:      School District (Elementary)/Remainder Code
+        SDSECA:      School District (Secondary)/Remainder Code
+        SDUNIA:      School District (Unified)/Remainder Code
+        PCI:         Principal City Indicator
+        PUMAA:       Public Use Microdata Area Code
+        GEOID:       Geographic Identifier
+        BTTRA:       Tribal Census Tract Code
+ 
+Data Type (E):
+    Estimates
+ 
+        NAME_E:      Area Name
+ 
+    Table 1:     Poverty Status in the Past 12 Months by Age
+    Universe:    Population for whom poverty status is determined
+    Source code: B17020
+    NHGIS code:  AD2D
+        AD2DE001:    Total
+        AD2DE002:    Income in the past 12 months below poverty level
+        AD2DE003:    Income in the past 12 months below poverty level: Under 6 years
+        AD2DE004:    Income in the past 12 months below poverty level: 6 to 11 years
+        AD2DE005:    Income in the past 12 months below poverty level: 12 to 17 years
+        AD2DE006:    Income in the past 12 months below poverty level: 18 to 59 years
+        AD2DE007:    Income in the past 12 months below poverty level: 60 to 74 years
+        AD2DE008:    Income in the past 12 months below poverty level: 75 to 84 years
+        AD2DE009:    Income in the past 12 months below poverty level: 85 years and over
+        AD2DE010:    Income in the past 12 months at or above poverty level
+        AD2DE011:    Income in the past 12 months at or above poverty level: Under 6 years
+        AD2DE012:    Income in the past 12 months at or above poverty level: 6 to 11 years
+        AD2DE013:    Income in the past 12 months at or above poverty level: 12 to 17 years
+        AD2DE014:    Income in the past 12 months at or above poverty level: 18 to 59 years
+        AD2DE015:    Income in the past 12 months at or above poverty level: 60 to 74 years
+        AD2DE016:    Income in the past 12 months at or above poverty level: 75 to 84 years
+        AD2DE017:    Income in the past 12 months at or above poverty level: 85 years and over
+ 
+    Table 2:     Sex by Age by Disability Status
+    Universe:    Civilian noninstitutionalized population
+    Source code: B18101
+    NHGIS code:  AD2S
+        AD2SE001:    Total
+        AD2SE002:    Male
+        AD2SE003:    Male: Under 5 years
+        AD2SE004:    Male: Under 5 years: With a disability
+        AD2SE005:    Male: Under 5 years: No disability
+        AD2SE006:    Male: 5 to 17 years
+        AD2SE007:    Male: 5 to 17 years: With a disability
+        AD2SE008:    Male: 5 to 17 years: No disability
+        AD2SE009:    Male: 18 to 34 years
+        AD2SE010:    Male: 18 to 34 years: With a disability
+        AD2SE011:    Male: 18 to 34 years: No disability
+        AD2SE012:    Male: 35 to 64 years
+        AD2SE013:    Male: 35 to 64 years: With a disability
+        AD2SE014:    Male: 35 to 64 years: No disability
+        AD2SE015:    Male: 65 to 74 years
+        AD2SE016:    Male: 65 to 74 years: With a disability
+        AD2SE017:    Male: 65 to 74 years: No disability
+        AD2SE018:    Male: 75 years and over
+        AD2SE019:    Male: 75 years and over: With a disability
+        AD2SE020:    Male: 75 years and over: No disability
+        AD2SE021:    Female
+        AD2SE022:    Female: Under 5 years
+        AD2SE023:    Female: Under 5 years: With a disability
+        AD2SE024:    Female: Under 5 years: No disability
+        AD2SE025:    Female: 5 to 17 years
+        AD2SE026:    Female: 5 to 17 years: With a disability
+        AD2SE027:    Female: 5 to 17 years: No disability
+        AD2SE028:    Female: 18 to 34 years
+        AD2SE029:    Female: 18 to 34 years: With a disability
+        AD2SE030:    Female: 18 to 34 years: No disability
+        AD2SE031:    Female: 35 to 64 years
+        AD2SE032:    Female: 35 to 64 years: With a disability
+        AD2SE033:    Female: 35 to 64 years: No disability
+        AD2SE034:    Female: 65 to 74 years
+        AD2SE035:    Female: 65 to 74 years: With a disability
+        AD2SE036:    Female: 65 to 74 years: No disability
+        AD2SE037:    Female: 75 years and over
+        AD2SE038:    Female: 75 years and over: With a disability
+        AD2SE039:    Female: 75 years and over: No disability
+ 
+Data Type (M):
+    Margins of error
+ 
+        NAME_M:      Area Name
+ 
+    Table 1:     Poverty Status in the Past 12 Months by Age
+    Universe:    Population for whom poverty status is determined
+    Source code: B17020
+    NHGIS code:  AD2D
+        AD2DM001:    Total
+        AD2DM002:    Income in the past 12 months below poverty level
+        AD2DM003:    Income in the past 12 months below poverty level: Under 6 years
+        AD2DM004:    Income in the past 12 months below poverty level: 6 to 11 years
+        AD2DM005:    Income in the past 12 months below poverty level: 12 to 17 years
+        AD2DM006:    Income in the past 12 months below poverty level: 18 to 59 years
+        AD2DM007:    Income in the past 12 months below poverty level: 60 to 74 years
+        AD2DM008:    Income in the past 12 months below poverty level: 75 to 84 years
+        AD2DM009:    Income in the past 12 months below poverty level: 85 years and over
+        AD2DM010:    Income in the past 12 months at or above poverty level
+        AD2DM011:    Income in the past 12 months at or above poverty level: Under 6 years
+        AD2DM012:    Income in the past 12 months at or above poverty level: 6 to 11 years
+        AD2DM013:    Income in the past 12 months at or above poverty level: 12 to 17 years
+        AD2DM014:    Income in the past 12 months at or above poverty level: 18 to 59 years
+        AD2DM015:    Income in the past 12 months at or above poverty level: 60 to 74 years
+        AD2DM016:    Income in the past 12 months at or above poverty level: 75 to 84 years
+        AD2DM017:    Income in the past 12 months at or above poverty level: 85 years and over
+ 
+    Table 2:     Sex by Age by Disability Status
+    Universe:    Civilian noninstitutionalized population
+    Source code: B18101
+    NHGIS code:  AD2S
+        AD2SM001:    Total
+        AD2SM002:    Male
+        AD2SM003:    Male: Under 5 years
+        AD2SM004:    Male: Under 5 years: With a disability
+        AD2SM005:    Male: Under 5 years: No disability
+        AD2SM006:    Male: 5 to 17 years
+        AD2SM007:    Male: 5 to 17 years: With a disability
+        AD2SM008:    Male: 5 to 17 years: No disability
+        AD2SM009:    Male: 18 to 34 years
+        AD2SM010:    Male: 18 to 34 years: With a disability
+        AD2SM011:    Male: 18 to 34 years: No disability
+        AD2SM012:    Male: 35 to 64 years
+        AD2SM013:    Male: 35 to 64 years: With a disability
+        AD2SM014:    Male: 35 to 64 years: No disability
+        AD2SM015:    Male: 65 to 74 years
+        AD2SM016:    Male: 65 to 74 years: With a disability
+        AD2SM017:    Male: 65 to 74 years: No disability
+        AD2SM018:    Male: 75 years and over
+        AD2SM019:    Male: 75 years and over: With a disability
+        AD2SM020:    Male: 75 years and over: No disability
+        AD2SM021:    Female
+        AD2SM022:    Female: Under 5 years
+        AD2SM023:    Female: Under 5 years: With a disability
+        AD2SM024:    Female: Under 5 years: No disability
+        AD2SM025:    Female: 5 to 17 years
+        AD2SM026:    Female: 5 to 17 years: With a disability
+        AD2SM027:    Female: 5 to 17 years: No disability
+        AD2SM028:    Female: 18 to 34 years
+        AD2SM029:    Female: 18 to 34 years: With a disability
+        AD2SM030:    Female: 18 to 34 years: No disability
+        AD2SM031:    Female: 35 to 64 years
+        AD2SM032:    Female: 35 to 64 years: With a disability
+        AD2SM033:    Female: 35 to 64 years: No disability
+        AD2SM034:    Female: 65 to 74 years
+        AD2SM035:    Female: 65 to 74 years: With a disability
+        AD2SM036:    Female: 65 to 74 years: No disability
+        AD2SM037:    Female: 75 years and over
+        AD2SM038:    Female: 75 years and over: With a disability
+        AD2SM039:    Female: 75 years and over: No disability
+ 
+--------------------------------------------------------------------------------
+Citation and Use of NHGIS Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* REDISTRIBUTION: You will not redistribute the data without permission.
+
+  You may publish a subset of the data to meet journal requirements for accessing 
+  data related to a particular publication. Contact us for permission for any other 
+  redistribution; we will consider requests for free and commercial redistribution.
+
+* CITATION: You will cite NHGIS appropriately.
+
+    * Publications and research reports employing NHGIS data (either tabular or GIS) 
+      should include the following citation:
+
+        Jonathan Schroeder, David Van Riper, Steven Manson, Katherine Knowles, Tracy Kugler, Finn Roberts, and Steven Ruggles. 
+        IPUMS National Historical Geographic Information System: Version 20.0 
+        [dataset]. Minneapolis, MN: IPUMS. 2025. 
+        http://doi.org/10.18128/D050.V20.0
+
+    * For policy briefs, online resources, or articles in the popular press, we 
+      recommend that you cite the use of NHGIS data as follows:
+
+        IPUMS NHGIS, University of Minnesota, www.nhgis.org.
+
+These terms of use are a legally binding agreement. You can use the data only in 
+accordance with these terms, and any other use is a violation of the agreement. 
+Violations may result in revocation of the agreement and prohibition from using other 
+IPUMS data. If IPUMS or our partners are harmed from your violation, you are 
+responsible for all damages, including reasonable attorney's fees and expenses.
+        
+In addition, we request that users send us a copy of any publications, research
+reports, or educational material making use of the data or documentation.
+
+Send electronic material to: nhgis@umn.edu
+
+Printed matter should be sent to:
+
+    IPUMS NHGIS
+    Institute for Social Research and Data Innovation
+    University of Minnesota
+    50 Willey Hall
+    225 19th Ave S
+    Minneapolis, MN 55455
