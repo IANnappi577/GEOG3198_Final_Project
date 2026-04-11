@@ -6,6 +6,9 @@
 - `pull`ing files: copying all changes from the online repository to your local VSCodium. Similar to refreshing a webpage to see the latest changes.
 - `commiting` files: an intermediate step in pushing files. Like verifying that you want to make changes before you actually do it.
 
+$\color{Orange}\Huge{\textbf{Rule of Thumb when using Github}}$
+
+Two things you can do to be 99.9% sure you won't run into errors are 1) _ALWAYS_ perform a git pull _BEFORE_ you start writing any code, and 2) after you are done writing code for the hour/day/time period, PUSH your code to the repo. This makes sure you always have the latest version of the repository.
 
 ### The most important commands
 
