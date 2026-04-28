@@ -2,6 +2,7 @@ import geopandas as gpd
 import pandas as pd
 import webbrowser
 import os
+from config import PROJECTION
 
 # -------------
 # Purpose: clean the data related to physical temperature variables and export to an appropriate format
@@ -22,6 +23,9 @@ temp_2015 = gpd.GeoDataFrame(temp_2015_csv, geometry=gpd.points_from_xy(temp_201
 # drop unnecessary columns
 # the columns AWND and WSFG (related to wind variables) were dropped because most stations did not have data for them
 temp_2015.drop(columns=['LATITUDE', 'LONGITUDE', 'AWND', 'WSFG'], inplace=True)
+
+# reproject to the final ürojection
+temp_2015.to_crs(PROJECTION, inplace=True)
 
 # visualize the output
 print('---- 2015 data ----')
@@ -46,6 +50,9 @@ temp_2025 = gpd.GeoDataFrame(temp_2025_csv, geometry=gpd.points_from_xy(temp_202
 
 # drop unnecessary columns
 temp_2025.drop(columns=['LATITUDE', 'LONGITUDE'], inplace=True)
+
+# reproject to the final projection
+temp_2025.to_crs(PROJECTION, inplace=True)
 
 # visualize the output
 print('---- 2025 data ----')
