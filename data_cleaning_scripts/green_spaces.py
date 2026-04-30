@@ -1,8 +1,6 @@
 import geopandas as gpd
 import pandas as pd
-import webbrowser
 import rasterio
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 from rasterstats import zonal_stats
