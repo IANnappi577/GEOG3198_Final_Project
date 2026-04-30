@@ -14,21 +14,20 @@ from config import PROJECTION
 
 # Make this a function to repurpose for both 2015 and 2025
 def clean_extreme_heat_days(year: str):
-    # load raw CSV
+    # load the raw CSV
     temp_csv = pd.read_csv(f'../data/temperature_data/{year}_temperature_raw.csv')
 
-    # convert to GeoDataFrame
+    # convert to a GeoDataFrame using the existing lat/long coords
     temp = gpd.GeoDataFrame(temp_csv, geometry=gpd.points_from_xy(temp_csv.LONGITUDE, temp_csv.LATITUDE), crs='EPSG:4326')
 
-    # drop unnecessary columns
-    # the columns AWND and WSFG (related to wind variables) were dropped because most stations did not have data for them
+    # drop unnecessary columns, which differ whether this is the 2015 or 2025 data:
     if(year == '2015'):
         temp.drop(columns=['LATITUDE', 'LONGITUDE', 'AWND', 'WSFG', 'DX70', 'TMAX', 'TAVG', 'EMXT'], inplace=True)
     else:
         temp.drop(columns=['LATITUDE', 'LONGITUDE', 'DX70', 'TMAX', 'TAVG', 'EMXT'], inplace=True)
 
     # Remove the weather stations that do not have the variable that we need: Number of Max Heat days, or DX90
-    # i.e., the weather stations for which DX90 is null
+    # i.e., we will remove the weather stations for which DX90 is null
     temp = temp[temp["DX90"].notna()]
 
     # reproject to the final projection
@@ -40,22 +39,27 @@ def clean_extreme_heat_days(year: str):
     census_bounds.to_crs(PROJECTION, inplace=True)
 
     # Now for each polygon in the census tract shapefile, we want to find the closest point (weather station) 
-    # value and assign the DX90 value from that point to that census tract.
+    # and assign the DX90 value from that point to that census tract.
+    # We will use a form of sjoin called sjoin_nearest, which will find the closest polygon per point.
     
-    # Follow this tutorial for sjoin_nearest points to polygons
+    # Here is a tutorial I followed to understand the syntax for a similar task:
     # https://stackoverflow.com/questions/72639523/question-on-geopandas-spatial-join-nearest
-    # result = tracts_gdf.sjoin_nearest(
-    #     points_gdf,
-    #     how="left",
-    #     distance_col="distance"
-    # )
+    joined_points_polygons = gpd.sjoin_nearest(
+        census_bounds, # polygon geometry
+        temp, # point geometry
+        how = 'left',
+        # we will leave out 'max_distance' from the tutorial
+        distance_col = "distances"  # I suppose this is a column for the min distance it found between polygon/point
+    )
 
-    # TODO: temp assign the mean value of the column to the census tracts
-    census_bounds['Ex_Heat_Days'] = temp['DX90'].mean()
-    print(census_bounds.head(5))
+    # Visualize the output
+    m = joined_points_polygons.explore()
+    m = temp.explore(m=m, color='Red')
+    m.save(f'joined_points_polygons_{year}.html')
+    webbrowser.open('file://' + os.path.realpath(f'joined_points_polygons_{year}.html'))
 
     # Export to GeoJSON
-    census_bounds.to_file(f'../data/temperature_data/{year}_extemp_census_tract.geojson')
+    joined_points_polygons.to_file(f'../data/temperature_data/{year}_extemp_census_tract.geojson')
 
 
 #####################################

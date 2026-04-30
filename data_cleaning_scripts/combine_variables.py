@@ -14,6 +14,10 @@ import sys
 # - ex_temp         --> number of extreme heat days > 90 deg
 # - per_imperv_surf --> 
 
+# Notes:
+# weigh the # of extreme heat days LESS than the prism data, because there are only 3-4 different values and they are NOT very different
+# bro it's like all one fucking value for the entirety of DC ich kack ab BRUDER
+
 def combine_variables(year: str):
     
     # Load all the variables as seperate GEOJSONs
