@@ -1,2 +1,6 @@
 .DS_Store
 data_cleaning_scripts/__pycache__/
+data/tdmean/2015/tdmean_months_stacked_2015.tif
+data/tdmean/2025/tdmean_months_stacked_2025.tif
+data/tmax/2015/tmax_months_stacked_2015.tif
+data/tmax/2025/tmax_months_stacked_2025.tif
