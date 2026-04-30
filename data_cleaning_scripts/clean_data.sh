@@ -19,4 +19,7 @@ python3 average_zonal_stats.py tmax
 echo "Cleaning the Variable: green spaces (Percent Impervious Surface)"
 python3 green_spaces.py
 
+echo "Cleaning the demographics variables"
+python3 demographics.py
+
 echo "Success! All variables were cleaned and are available in <filepath TBD>"
