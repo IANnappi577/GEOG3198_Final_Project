@@ -10,6 +10,10 @@ import sys
 #       extreme_heat_days.py, green_spaces.py, and demographics.py into one final .geojson of all of the variables
 #       in appropriately-labeled columns of a GeoDataFrame per census tract.
 
+# Final variables:
+# - ex_temp         --> number of extreme heat days > 90 deg
+# - per_imperv_surf --> 
+
 def combine_variables(year: str):
     
     # Load all the variables as seperate GEOJSONs

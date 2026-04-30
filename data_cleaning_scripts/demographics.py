@@ -8,39 +8,12 @@ from config import PROJECTION
 # Load census demographic variables, and clean and clip them to the correct
 # tigerline shapefiles
 
+# TODO: REFACTOR
+# diese scheißverfickten Tabellen machen mich ganz verrückt ehrlich gesagt. WARUM KÖNNEN
+# DIE SICH NICHT BENEHMEN MANN scheiß auf das Census Bureau ich hass euch
+# ,,wir welchseln die Form der Daten jedes Jahr nur weil es EINFACH SPASS BRINGT" eh halt die Fresse ihr dumme Hur****
+
 # Create a function to perform the same steps on both 2015 and 2025 census data.
-# Unfortunately, column names for the census csvs are differnet per year. So make
-# a dictionary of column names for each year to be able to reuse the same steps in the
-# below function
-
-###### NOTE FOR REFACTORING: THE SAME CODE IS USED JUST A DIFFERENT PREFIX: AU9J (2025) vs AD2S (2015)
-##### We can do a dynamic substitution instead of this nonsense dictionary scheiß
-v_2015 = {
-    'Tot_pop': 'AD2SE001',
-    'Pop_under_5': ['AD2SE003', 'AD2SE022'],
-    'Pop_over_65': ['AD2SE015', 'AD2SE018', 'AD2SE034', 'AD2SE037'],
-    'Pop_disabled': ['AD2SE004', 'AD2SE007', 'AD2SE010', 'AD2SE013',
-                     'AD2SE016', 'AD2SE019', 'AD2SE023', 'AD2SE026',
-                     'AD2SE029', 'AD2SE032', 'AD2SE035', 'AD2SE038'],
-    'Tot_Poverty': 'AD2DE001',
-    'Pop_in_poverty': 'AD2DE002'
-}
-v_2025 = {
-    'Tot_pop': 'AU9JE001',
-    'Pop_under_5': ['AU9JE003', 'AU9JE022'],
-
-    'Pop_over_65': ['AU9JE015', 'AU9JE018', 'AU9JE034', 'AU9JE037'],
-    'Pop_disabled': ['AU9JE004', 'AU9JE007', 'AU9JE010', 'AU9JE013',
-                     'AU9JE016', 'AU9JE019', 'AU9JE023', 'AU9JE026',
-                     'AU9JE029', 'AU9JE032', 'AU9JE035', 'AU9JE038'],
-    'Tot_Poverty': 'AU84E001',
-    'Pop_in_poverty': 'AU84E002'
-}
-cen_cols = {
-    '2015': v_2015,
-    '2025': v_2025
-}
-
 def process_demographics_data(year: str):
     
     # Load all the raw census tables
@@ -54,21 +27,45 @@ def process_demographics_data(year: str):
 
     # Drop the unnecessary columns (blank or unneeded)
     cols = ['GISJOIN', 'STUSAB', 'REGIONA', 'DIVISIONA', 'STATE', 'STATEA', 'COUNTY', 'COUNTYA',
-        'COUSUBA', 'PLACEA', 'TRACTA', 'CONCITA', 'AIANHHA', 'RES_ONLYA', 'TRUSTA', 'AIHHTLI', 'AITSCEA', 
-        'ANRCA', 'CBSAA', 'CSAA', 'METDIVA', 'NECTAA', 'CNECTAA', 'NECTADIVA', 'UAA', 'CDCURRA', 'SLDUA', 'SLDLA',
-        'ZCTA5A', 'SUBMCDA', 'SDELMA', 'SDSECA', 'SDUNIA', 'PCI', 'PUMAA', 'BTTRA', 'NAME_E', 'NAME_M']
+        'COUSUBA', 'PLACEA', 'TRACTA', 'CONCITA', 'AIANHHA', 'RES_ONLYA', 'TRUSTA', 'AIHHTLI', 
+        'ANRCA', 'CBSAA', 'CSAA', 'METDIVA', 'UAA', 'CDCURRA', 'SLDUA', 'SLDLA', 'ZCTA5A', 'SUBMCDA',
+        'SDELMA', 'SDSECA', 'SDUNIA', 'PCI', 'PUMAA', 'BTTRA', 'NAME_E', 'NAME_M']
     disability_poverty.drop(columns=cols, inplace=True)
     tot_pop.drop(columns=cols, inplace=True)
-    tot_pop.drop(columns=['BLKGRPA', 'BTBGA'], inplace=True)
     census_bounds.drop(columns=['STATEFP', 'COUNTYFP', 'TRACTCE', 'NAMELSAD', 'MTFCC', 'FUNCSTAT', 'INTPTLAT', 'INTPTLON'], inplace=True)
+    
+    # Drop columns NOT found in disability_poverty
+    tot_pop.drop(columns=['BLKGRPA', 'BTBGA'], inplace=True)
 
-    # clean the GEOID that can be joined to the census tracts
-    # drop the prefix '14000US' from the GEOID column
-    tot_pop['GEOID_JOIN'] = [geoid[7:] for geoid in tot_pop['GEOID']]
-    disability_poverty['GEOID_JOIN'] = [geoid[7:] for geoid in disability_poverty['GEOID']]
-    # also drop the old confusing 'GEOID' column in these so it doesn't cause problems while merging
-    tot_pop.drop(columns=['GEOID'], inplace=True)
-    disability_poverty.drop(columns=['GEOID'], inplace=True)
+    # drop columns specific to 2015 data
+    if(year == '2015'):
+        extra_cols = ['AITSCEA', 'NECTAA', 'CNECTAA', 'NECTADIVA']
+        disability_poverty.drop(columns=extra_cols, inplace=True)
+        tot_pop.drop(columns=extra_cols, inplace=True)
+
+    # drop columns specific to 2025 data
+    if(year == '2025'):
+        disability_poverty.drop(columns=['AITSA'], inplace=True)
+        tot_pop.drop(columns=['AITSA'], inplace=True)
+
+    # Clean the GEOID that can be joined to the census tracts
+    # This value is different for 2015 and 2025, of course, cause the census bureau likes changing
+    # things between years.
+    if(year == '2015'):
+        # For 2015, we need to convert the GEOID column into one compatible with the Tigerline shapefile GEOID
+        # Simple drop the prefix '14000US' from the GEOID column
+        tot_pop['GEOID_JOIN'] = [geoid[7:] for geoid in tot_pop['GEOID']]
+        disability_poverty['GEOID_JOIN'] = [geoid[7:] for geoid in disability_poverty['GEOID']]
+        # also drop the old confusing 'GEOID' column in these so it doesn't cause problems while merging
+        tot_pop.drop(columns=['GEOID'], inplace=True)
+        disability_poverty.drop(columns=['GEOID'], inplace=True)
+    else:
+        # For 2025, we simply need to rename the TL_GEO_ID to be the GEOID_JOIN column to join on
+        tot_pop.rename(columns={'TL_GEO_ID': 'GEOID_JOIN'}, inplace=True)
+        disability_poverty.rename(columns={'TL_GEO_ID': 'GEOID_JOIN'}, inplace=True)
+        # Also change this column to a string, as it is currently an int64 and cannot be joined to the string GEOID:
+        tot_pop['GEOID_JOIN'] = tot_pop['GEOID_JOIN'].astype(str)
+        disability_poverty['GEOID_JOIN'] = disability_poverty['GEOID_JOIN'].astype(str)
 
     # Join both tables to the census tracts
     dem_stats = pd.merge(census_bounds, tot_pop, how='inner', left_on='GEOID', right_on='GEOID_JOIN')
@@ -78,52 +75,74 @@ def process_demographics_data(year: str):
     dem_stats = pd.merge(dem_stats, disability_poverty, how='inner', left_on='GEOID', right_on='GEOID_JOIN')
 
     # Now calculate the variables we want and put them in appropriatly-named columns
-    # Get the column names from the dictionary cen_cols described at the top of the program
-    col_n = cen_cols[f'{year}']
 
-    # Each column is normalized by the total population: column AD2SE001 for 2015 and AUO6M001 for 2025
-    # See the data sources document to see what each code column means.
+    # The census bureau official column names follow a pre-determined pattern, where a 4-character prefix representing 
+    # the year is followed by the variable number code ('E' + a 3-digit number). Although the prefix differs by year, the 
+    # variable codes are the same, so we will dynamically build the column names per year. So, we define the prefix for each 
+    # year, and will substitute this to form the complete column name:
+    if(year == '2015'):
+        prefix = 'AD2S'
+    else:
+        prefix = 'AU9J'
 
-    # Each final value is a decimal percentage, so to get the percentage on a scale from 0-100,
+    # When fetching and computing each of the variables below, each column is normalized by the total population
+    # column, either AD2SE001 for 2015 and AU9JE001 for 2025.
+    # See the Data Sources document or the official codebooks in ../data/demographic_data/raw_tables/ to see what each 
+    # column code means.
+
+    # Finally, each final value is a decimal percentage, so to get the percentage on a scale from 0-100,
     # simply multiply by 100
 
     # ------------
     # Percentage of Individuals under the age of 5
     #       --> Sum the number of male and female individuals < 5
-    dem_stats['Perc_un_5'] = (dem_stats[col_n['Pop_under_5'][0]] + dem_stats[col_n['Pop_under_5'][1]]) / dem_stats[col_n['Tot_pop']]
+    dem_stats['Perc_un_5'] = (dem_stats[prefix + 'E003'] + dem_stats[prefix + 'E022']) / dem_stats[prefix + 'E001']
     # print(dem_stats['Perc_un_5'].head(5))
 
     # ------------
     # Percentage of Elderly Individuals over 65
     #       --> Sum the number of male and female individuals in the 65-74 and 75+ categories
-    dem_stats['Perc_ov_65'] = (dem_stats[col_n['Pop_over_65'][0]] + dem_stats[col_n['Pop_over_65'][1]] +
-                                dem_stats[col_n['Pop_over_65'][2]] + dem_stats[col_n['Pop_over_65'][3]]) / dem_stats[col_n['Tot_pop']]
+    dem_stats['Perc_ov_65'] = (dem_stats[prefix + 'E015'] + dem_stats[prefix + 'E018'] +
+                                dem_stats[prefix + 'E034'] + dem_stats[prefix + 'E037']) / dem_stats[prefix + 'E001']
     # print(dem_stats['Perc_ov_65'].head(5))
 
     # ------------
     # Percentage of Individuals with a Disability
-    #       --> Sum the number of male and female individuals with a disability in every age category                            
-    dem_stats['Perc_disabl'] = (dem_stats[col_n['Pop_disabled'][0]] + dem_stats[col_n['Pop_disabled'][1]] +
-                                dem_stats[col_n['Pop_disabled'][2]] + dem_stats[col_n['Pop_disabled'][3]] +
-                                dem_stats[col_n['Pop_disabled'][4]] + dem_stats[col_n['Pop_disabled'][5]] +
-                                dem_stats[col_n['Pop_disabled'][6]] + dem_stats[col_n['Pop_disabled'][7]] +
-                                dem_stats[col_n['Pop_disabled'][8]] + dem_stats[col_n['Pop_disabled'][9]] +
-                                dem_stats[col_n['Pop_disabled'][10]] + dem_stats[col_n['Pop_disabled'][11]]) / dem_stats[col_n['Tot_pop']]
+    #       --> Sum the number of male and female individuals with a disability in every age category                                 
+    dem_stats['Perc_disabl'] = (dem_stats[prefix + 'E004'] + dem_stats[prefix + 'E007'] +
+                                dem_stats[prefix + 'E010'] + dem_stats[prefix + 'E013'] +
+                                dem_stats[prefix + 'E016'] + dem_stats[prefix + 'E019'] +
+                                dem_stats[prefix + 'E023'] + dem_stats[prefix + 'E026'] +
+                                dem_stats[prefix + 'E029'] + dem_stats[prefix + 'E032'] +
+                                dem_stats[prefix + 'E035'] + dem_stats[prefix + 'E038']) / dem_stats[prefix + 'E001']
     # print(dem_stats['Perc_disabl'].head(5))
+
+    # Now the other table (For poverty statistics) has a different prefix for 2015 and 2025, so update the prefix:
+    if(year == '2015'):
+        prefix = 'AD2D'
+    else:
+        prefix = 'AU84'
 
     # ------------
     # Percentage of Individuals Below the Poverty Level
     #       --> Simply total number of individuals under the poverty level, normalized by the number of
     #               people in this survey
-    dem_stats['Perc_in_pov'] = dem_stats[col_n['Pop_in_poverty']] / dem_stats[col_n['Tot_Poverty']]
+    dem_stats['Perc_in_pov'] = dem_stats[prefix + 'E002'] / dem_stats[prefix + 'E001']
     # print(dem_stats['Perc_in_pov'].head(5))
 
     # Remove the unneeded columns and only keep the columns we calculated for export
     final_statistics = dem_stats[['GEOID', 'NAME', 'ALAND', 'AWATER', 'Perc_un_5', 'Perc_ov_65', 'Perc_disabl', 'Perc_in_pov', 'geometry']].copy()
-    # print(final_statistics.head(5))
+    print(final_statistics.head(5))
 
     # Export the final geojson
     final_statistics.to_file(f'../data/demographic_data/final_tables/{year}_final_stats.geojson')
 
+
+#####################################
+# Run the above function for both years
+print('-------- 2015 demographics --------')
 process_demographics_data('2015')
-#process_demographics_data('2025')
+print()
+
+print('-------- 2025 demographics --------')
+process_demographics_data('2025')
