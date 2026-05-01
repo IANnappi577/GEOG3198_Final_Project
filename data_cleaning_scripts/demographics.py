@@ -32,7 +32,6 @@ def process_demographics_data(year: str):
         'SDELMA', 'SDSECA', 'SDUNIA', 'PCI', 'PUMAA', 'BTTRA', 'NAME_E', 'NAME_M']
     disability_poverty.drop(columns=cols, inplace=True)
     tot_pop.drop(columns=cols, inplace=True)
-    census_bounds.drop(columns=['STATEFP', 'COUNTYFP', 'TRACTCE', 'NAMELSAD', 'MTFCC', 'FUNCSTAT', 'INTPTLAT', 'INTPTLON'], inplace=True)
     
     # Drop columns NOT found in disability_poverty
     tot_pop.drop(columns=['BLKGRPA', 'BTBGA'], inplace=True)
@@ -131,7 +130,8 @@ def process_demographics_data(year: str):
     # print(dem_stats['Perc_in_pov'].head(5))
 
     # Remove the unneeded columns and only keep the columns we calculated for export
-    final_statistics = dem_stats[['GEOID', 'NAME', 'ALAND', 'AWATER', 'Perc_un_5', 'Perc_ov_65', 'Perc_disabl', 'Perc_in_pov', 'geometry']].copy()
+    final_statistics = dem_stats[['GEOID', 'NAME', 'ALAND', 'AWATER', 'Perc_un_5', 'Perc_ov_65', 
+                    'Perc_disabl', 'Perc_in_pov', 'geometry']].copy()
     print(final_statistics.head(5))
 
     # Export the final geojson
