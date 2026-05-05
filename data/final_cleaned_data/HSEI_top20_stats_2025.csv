@@ -1,0 +1,10 @@
+Year,Category,Variable,Unit,Top 20 Avg,All Tracts Avg,Difference
+2025,Environmental,Mean Max Temp,°F,28.7743,28.6389,0.1354
+2025,Environmental,Mean Dew Point,°F,17.6784,17.5832,0.0952
+2025,Environmental,Mean Impervious Surface,%,64.3856,57.1617,7.224
+2025,Environmental,Days Exceeding 90°F,days,36.0,35.4757,0.5243
+2025,Demographic,% Over 65,%,0.1431,0.1291,0.014
+2025,Demographic,% Under 5,%,0.07,0.058,0.012
+2025,Demographic,% With Disability,%,0.1786,0.1125,0.0661
+2025,Demographic,% In Poverty,%,0.2796,0.1635,0.1161
+2025,Index,HSEI Score,,0.5103,0.4013,0.109

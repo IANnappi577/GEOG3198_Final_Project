@@ -1,0 +1,10 @@
+Year,Category,Variable,Unit,Top 20 Avg,All Tracts Avg,Difference
+2015,Environmental,Mean Max Temp,°F,28.9679,28.7951,0.1728
+2015,Environmental,Mean Dew Point,°F,17.104,17.0389,0.0651
+2015,Environmental,Mean Impervious Surface,%,62.1907,55.7077,6.483
+2015,Environmental,Days Exceeding 90°F,days,49.6,45.5642,4.0358
+2015,Demographic,% Over 65,%,0.123,0.1125,0.0105
+2015,Demographic,% Under 5,%,0.0779,0.065,0.0129
+2015,Demographic,% With Disability,%,0.2064,0.121,0.0854
+2015,Demographic,% In Poverty,%,0.3515,0.1931,0.1584
+2015,Index,HSEI Score,,0.5578,0.4262,0.1316
